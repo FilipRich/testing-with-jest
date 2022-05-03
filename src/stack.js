@@ -14,5 +14,5 @@ exports.pop = function () {
 
 // Returnerar det översta elementet i stacken
 exports.peek = function () {
-    return stack[0]; // Medveteet felaktigt
+    return _.last(stack); 
 };
