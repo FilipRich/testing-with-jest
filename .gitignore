@@ -105,3 +105,6 @@ typings/
 
 # dist/bundle.js
 dist/bundle.js
+
+# DS_store
+.DS_Store
