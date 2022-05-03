@@ -10,9 +10,9 @@ exports.push = function (x) {
 // Returnerar det översta elementet i stacken och tar bort det
 exports.pop = function () {
     return stack.pop();
-}
+};
 
 // Returnerar det översta elementet i stacken
 exports.peek = function () {
     return stack[0]; // Medveteet felaktigt
-}
+};
