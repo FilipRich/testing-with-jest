@@ -35,14 +35,16 @@ describe('Clicking "Pusha till stacken"', () => {
 
 test('Popping stack should return top item', async () => {
     let push = await driver.findElement(By.id('push'));
-    let pop = await driver.findElement(By.id('pop'));
     for (let i = 0; i < 2; i++){
         await push.click();
         let alert = await driver.switchTo().alert();
-        await alert.sendKeys(`"${i}"`)
+        await alert.sendKeys(`${i}`)
         await alert.accept();
     };
-    let popItem = await pop.click();
-    expect(popItem).toEqual("1");
+    //let popItem = await pop.click();
+    let pop = await driver.findElement(By.id('pop'));
+    await pop.click();
+    let poppedText = await driver.switchTo().alert().getText();
+    expect(poppedText).toEqual("Tog bort 1");
 });
 
