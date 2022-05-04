@@ -25,10 +25,10 @@ test('The stack should be empty in the beginning', async () => {
 
 test('Popping stack should return top item', async () => {
     let push = await driver.findElement(By.id('push'));
-    let alert = await driver.switchTo().alert();
     let pop = await driver.findElement(By.id('pop'));
     for (let i = 0; i < 2; i++){
         await push.click();
+        let alert = await driver.switchTo().alert();
         await alert.sendKeys(i)
         await alert.accept();
     };
