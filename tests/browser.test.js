@@ -41,7 +41,6 @@ test('Popping stack should return top item', async () => {
         await alert.sendKeys(`${i}`)
         await alert.accept();
     };
-    //let popItem = await pop.click();
     let pop = await driver.findElement(By.id('pop'));
     await pop.click();
     let poppedText = await driver.switchTo().alert().getText();
