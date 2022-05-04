@@ -23,19 +23,6 @@ test('The stack should be empty in the beginning', async () => {
 	expect(stack).toEqual("n/a");
 });
 
-test('Popping stack should return top item', async () => {
-    let push = await driver.findElement(By.id('push'));
-    let pop = await driver.findElement(By.id('pop'));
-    for (let i = 0; i < 2; i++){
-        await push.click();
-        let alert = await driver.switchTo().alert();
-        await alert.sendKeys(i)
-        await alert.accept();
-    };
-    let popItem = await pop.click();
-    expect(popItem).toEqual(1);
-});
-
 describe('Clicking "Pusha till stacken"', () => {
 	it('should open a prompt box', async () => {
 		let push = await driver.findElement(By.id('push'));
@@ -45,3 +32,17 @@ describe('Clicking "Pusha till stacken"', () => {
 		await alert.accept();
 	});
 });
+
+test('Popping stack should return top item', async () => {
+    let push = await driver.findElement(By.id('push'));
+    let pop = await driver.findElement(By.id('pop'));
+    for (let i = 0; i < 2; i++){
+        await push.click();
+        let alert = await driver.switchTo().alert();
+        await alert.sendKeys(`"${i}"`)
+        await alert.accept();
+    };
+    let popItem = await pop.click();
+    expect(popItem).toEqual("1");
+});
+
