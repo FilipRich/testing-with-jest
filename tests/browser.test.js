@@ -4,7 +4,7 @@ require('geckodriver');
 const fileUnderTest = 'file://' + __dirname.replace(/ /g, '%20') + '/../dist/index.html';
 const defaultTimeout = 10000;
 let driver;
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000 * 60 * 5; // 5 minuter
+//jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000 * 60 * 5; // 5 minuter
 
 // Det här körs innan vi kör testerna för att säkerställa att Firefox är igång
 beforeAll(async () => {
@@ -21,6 +21,19 @@ afterAll(async() => {
 test('The stack should be empty in the beginning', async () => {
 	let stack = await driver.findElement(By.id('top_of_stack')).getText();
 	expect(stack).toEqual("n/a");
+});
+
+test('Popping stack should return top item', async () => {
+    let push = await driver.findElement(By.id('push'));
+    let alert = await driver.switchTo().alert();
+    let pop = await driver.findElement(By.id('pop'));
+    for (let i = 0; i < 2; i++){
+        await push.click();
+        await alert.sendKeys(i)
+        await alert.accept();
+    };
+    let popItem = await pop.click();
+    expect(popItem).toEqual(1);
 });
 
 describe('Clicking "Pusha till stacken"', () => {
