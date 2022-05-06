@@ -24,5 +24,5 @@ test('peek on stack after top element is removed returns previous element', () =
     stack.push(42);
     stack.pop();
     expect(stack.peek()).toBeDefined();
-    expect(stack.peek()).toBe(42); // medvetet fel
+    expect(stack.peek()).toBe("wow"); 
 });

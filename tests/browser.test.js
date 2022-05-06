@@ -44,6 +44,6 @@ test('Popping stack should return top item', async () => {
     let pop = await driver.findElement(By.id('pop'));
     await pop.click();
     let poppedText = await driver.switchTo().alert().getText();
-    expect(poppedText).toEqual("Tog bort 0"); //medvetet fel
+    expect(poppedText).toEqual("Tog bort 1"); 
 });
 
